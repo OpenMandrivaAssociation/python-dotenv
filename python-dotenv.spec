@@ -4,7 +4,7 @@ Release:        2
 Group:          Development/Python
 Summary:        Python module for adding key-value pairs from .env files to the environment
 License:        BSD
-URL:            http://pypi.org/project/python-dotenv/
+URL:            https://pypi.org/project/python-dotenv/
 Source0:        https://pypi.python.org/packages/source/p/python-dotenv/python-dotenv-%{version}.tar.gz
 BuildRequires:  pkgconfig(python)
 BuildRequires:  python3dist(setuptools)
