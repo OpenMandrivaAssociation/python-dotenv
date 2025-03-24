@@ -1,13 +1,13 @@
-Name:           python-dotenv
-Version:        0.15.0
-Release:        2
-Group:          Development/Python
-Summary:        Python module for adding key-value pairs from .env files to the environment
-License:        BSD
-URL:            https://pypi.org/project/python-dotenv/
-Source0:        https://pypi.python.org/packages/source/p/python-dotenv/python-dotenv-%{version}.tar.gz
-BuildRequires:  pkgconfig(python)
-BuildRequires:  python3dist(setuptools)
+Name:		python-dotenv
+Version:	1.0.1
+Release:	1
+Group:		Development/Python
+Summary:	Python module for adding key-value pairs from .env files to the environment
+License:	BSD-3-Clause
+URL:		https://pypi.org/project/python-dotenv/
+Source0:	https://pypi.python.org/packages/source/p/python-dotenv/python-dotenv-%{version}.tar.gz
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python-setuptools
 BuildArch:	noarch
 
 %description
@@ -25,6 +25,7 @@ using 12-factor principles.
 %py_install
 
 %files
-%license LICENSE
 %{_bindir}/dotenv
 %{python_sitelib}/*
+%license LICENSE
+%doc README.md
