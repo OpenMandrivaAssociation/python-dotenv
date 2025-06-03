@@ -41,7 +41,10 @@ rm -rf src/%{oname}.egg-info
 %py_install
 
 %if %{with tests}
+%check
 export CI=true
+# CLI tests require distribution to be found, and the correct executable installed
+export PATH="%{buildroot}%{_bindir}:$PATH"
 export PYTHONPATH="%{buildroot}%{python_sitelib}:%{buildroot}%{python_sitelib}:${PWD}"
 %{__python} -m pytest -v
 %endif
