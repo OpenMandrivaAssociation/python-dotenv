@@ -1,14 +1,26 @@
+%define oname python_dotenv
+%bcond_without tests
+
 Name:		python-dotenv
-Version:	1.0.1
+Version:	1.1.0
 Release:	1
 Group:		Development/Python
 Summary:	Python module for adding key-value pairs from .env files to the environment
 License:	BSD-3-Clause
 URL:		https://pypi.org/project/python-dotenv/
-Source0:	https://pypi.python.org/packages/source/p/python-dotenv/python-dotenv-%{version}.tar.gz
-BuildRequires:	pkgconfig(python3)
-BuildRequires:	python-setuptools
+Source0:	https://pypi.python.org/packages/source/p/python-dotenv/%{oname}-%{version}.tar.gz
 BuildArch:	noarch
+
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python%{pyver}dist(click)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
+%if %{with tests}
+BuildRequires:	python%{pyver}dist(pytest)
+BuildRequires:	python%{pyver}dist(ipython)
+%endif
+
 
 %description
 Reads the key-value pair from .env file and adds them to environment variable.
@@ -16,7 +28,10 @@ It is great for managing app settings during development and in production
 using 12-factor principles.
 
 %prep
-%autosetup -p1
+%autosetup -n %{oname}-%{version} -p1
+
+# Remove upstream egg-info
+rm -rf src/%{oname}.egg-info
 
 %build
 %py_build
@@ -24,8 +39,15 @@ using 12-factor principles.
 %install
 %py_install
 
+%if %{with tests}
+export CI=true
+export PYTHONPATH="%{buildroot}%{python_sitelib}:%{buildroot}%{python_sitelib}:${PWD}"
+%{__python} -m pytest -v
+%endif
+
 %files
 %{_bindir}/dotenv
-%{python_sitelib}/*
+%{python_sitelib}/dotenv/
+%{python_sitelib}/%{oname}-%{version}*.*-info
 %license LICENSE
 %doc README.md
