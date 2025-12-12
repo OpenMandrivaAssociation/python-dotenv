@@ -3,7 +3,7 @@
 
 Name:		python-dotenv
 Version:	1.1.0
-Release:	1
+Release:	2
 Group:		Development/Python
 Summary:	Python module for adding key-value pairs from .env files to the environment
 License:	BSD-3-Clause
