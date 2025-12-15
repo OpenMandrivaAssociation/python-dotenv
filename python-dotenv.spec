@@ -2,8 +2,8 @@
 %bcond_without tests
 
 Name:		python-dotenv
-Version:	1.1.0
-Release:	2
+Version:	1.2.1
+Release:	1
 Group:		Development/Python
 Summary:	Python module for adding key-value pairs from .env files to the environment
 License:	BSD-3-Clause
