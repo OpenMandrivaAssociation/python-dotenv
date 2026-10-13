@@ -3,7 +3,7 @@
 %bcond tests 1
 
 Name:		python-dotenv
-Version:	1.2.2
+Version:	1.2.4
 Release:	1
 Group:		Development/Python
 Summary:	Python module for adding key-value pairs from .env files to the environment
@@ -20,7 +20,6 @@ BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(wheel)
 %if %{with tests}
 BuildRequires:	python%{pyver}dist(click)
-BuildRequires:	python%{pyver}dist(ipython)
 BuildRequires:	python%{pyver}dist(pytest)
 BuildRequires:	python%{pyver}dist(sh)
 %endif
